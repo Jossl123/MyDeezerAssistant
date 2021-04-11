@@ -5,18 +5,19 @@ DZ.init({
     appId: '471962',
     channelUrl: 'jossl123.github.io/MyDeezerAssistant/'
 });
-//test
 
-DZ.login(function(response) {
-    if (response.authResponse) {
-        console.log('Welcome!  Fetching your information.... ');
-        DZ.api('/user/me', function(response) {
-            console.log('Good to see you, ' + response.name + '.');
-        });
-    } else {
-        console.log('User cancelled login or did not fully authorize.');
-    }
-}, { perms: 'basic_access,email' });
+function login() {
+    DZ.login(function(response) {
+        if (response.authResponse) {
+            console.log('Welcome!  Fetching your information.... ');
+            DZ.api('/user/me', function(response) {
+                console.log('Good to see you, ' + response.name + '.');
+            });
+        } else {
+            console.log('User cancelled login or did not fully authorize.');
+        }
+    }, { perms: 'basic_access,email' });
+}
 
 // This runs when the speech recognition service starts
 /*recognition.onstart = function() {
