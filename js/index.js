@@ -3,7 +3,7 @@ var recognition = new webkitSpeechRecognition();
 
 DZ.init({
     appId: '471962',
-    channelUrl: 'jossl123.github.io/MyDeezerAssistant/'
+    channelUrl: 'jossl123.github.io/MyDeezerAssistant/channel.js'
 });
 
 function login() {
