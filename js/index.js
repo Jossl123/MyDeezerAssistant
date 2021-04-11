@@ -1,15 +1,24 @@
 var webkitSpeechRecognition = window.webkitSpeechRecognition;
 var recognition = new webkitSpeechRecognition();
 
-fetch('https://connect.deezer.com/oauth/auth.php?app_id=471962&redirect_uri=https://jossl123.github.io/MyDeezerAssistant/&perms=basic_access,email')
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        console.log(data);
-    });
+DZ.init({
+    appId: '471962',
+    channelUrl: 'https://jossl123.github.io/MyDeezerAssistant/channel.html'
+});
+
+DZ.login(function(response) {
+    if (response.authResponse) {
+        console.log('Welcome!  Fetching your information.... ');
+        DZ.api('/user/me', function(response) {
+            console.log('Good to see you, ' + response.name + '.');
+        });
+    } else {
+        console.log('User cancelled login or did not fully authorize.');
+    }
+}, { perms: 'basic_access,email' });
+
 // This runs when the speech recognition service starts
-recognition.onstart = function() {
+/*recognition.onstart = function() {
     console.log("We are listening. Try speaking into the microphone.");
 };
 
@@ -20,4 +29,4 @@ recognition.onresult = function(event) {
 };
 
 // start recognition
-recognition.start();
+recognition.start();*/
