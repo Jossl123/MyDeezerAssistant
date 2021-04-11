@@ -5,6 +5,7 @@ DZ.init({
     appId: '471962',
     channelUrl: 'jossl123.github.io/MyDeezerAssistant/'
 });
+//test
 
 DZ.login(function(response) {
     if (response.authResponse) {
